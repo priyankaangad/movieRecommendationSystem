@@ -22,14 +22,13 @@ if 'user_menu' not in st.session_state:
 def main():
     def initial_options():
         # To display menu
-        st.sidebar.title("Movie Recommender System")
-        st.sidebar.markdown("Navigate through the app using the options below:")
-        
-        st.session_state.user_menu = st.sidebar.radio(
-        "What are you looking for? 👀",
-        options=['Recommend me a similar movie', 'Describe me a movie', 'Check all Movies'],
-        index=0
-    )
+        st.session_state.user_menu = streamlit_option_menu.option_menu(
+            menu_title='What are you looking for? 👀',
+            options=['Recommend me a similar movie', 'Describe me a movie', 'Check all Movies'],
+            icons=['film', 'film', 'film'],
+            menu_icon='list',
+            orientation="horizontal",
+        )
 
         if st.session_state.user_menu == 'Recommend me a similar movie':
             recommend_display()
